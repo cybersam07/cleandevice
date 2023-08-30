@@ -55,3 +55,20 @@ body{
       color: black;
     }
   }
+@keyframes programAnimation {
+    0% {
+        /* Initial styles */
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    50% {
+        /* Intermediate styles (program running) */
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        /* Final styles (approved sign) */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
