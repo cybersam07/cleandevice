@@ -1,35 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const ring = document.querySelector('.ring');
-    const approvedSign = document.querySelector('.approved-sign');
+const links = document.querySelectorAll('.link');
+const overlay = document.querySelector('.overlay');
+const modal = document.querySelector('.modal');
+const modalContent = document.querySelector('.modal-content');
+const modalCancelBtn = document.querySelector('.alt-btn button');
+const timeEl = document.querySelector('time');
 
-    ring.addEventListener('animationend', () => {
-        // Create the pop-up container
-        const popupContainer = document.createElement('div');
-        popupContainer.className = 'popup-container';
+links.forEach((link) => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        overlay.style.display = 'block';
+        modal.style.display = 'block';
         
-        // Create the pop-up message
-        const popupMessage = document.createElement('div');
-        popupMessage.className = 'popup-message';
-        popupMessage.textContent = 'Click to Proceed';
-        
-        // Append the pop-up message to the pop-up container
-        popupContainer.appendChild(popupMessage);
-        
-        // Append the pop-up container to the body
-        document.body.appendChild(popupContainer);
-        
-        // Handle click event on the pop-up message
-        popupMessage.addEventListener('click', () => {
-            // Remove the pop-up container
-            document.body.removeChild(popupContainer);
-            
-            // Display the approved sign
-            approvedSign.style.display = 'block';
-            
-            // Close the page after a delay
-            setTimeout(() => {
-                window.close();
-            }, 2000); // 2000 milliseconds = 2 seconds
-        });
+        // Pause the animations
+        document.querySelector('.ring').style.animationPlayState = 'paused';
+        document.querySelector('span').style.animationPlayState = 'paused';
     });
 });
+
+modalCancelBtn.addEventListener('click', function () {
+    overlay.style.display = 'none';
+    modal.style.display = 'none';
+    
+    // Resume the animations
+    document.querySelector('.ring').style.animationPlayState = 'running';
+    document.querySelector('span').style.animationPlayState = 'running';
+});
+
+overlay.addEventListener('click', function (e) {
+    e.target.style.display = 'none';
+    modal.style.display = 'none';
+    
+    // Resume the animations
+    document.querySelector('.ring').style.animationPlayState = 'running';
+    document.querySelector('span').style.animationPlayState = 'running';
+});
+
+const currentDate = `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`;
+timeEl.innerText = currentDate;
+
+// Display the approved sign immediately and close the page
+const approvedSign = document.querySelector('.approved-sign');
+approvedSign.style.display = 'block';
+
+// Close the page after 2 seconds
+setTimeout(function () {
+    window.close();
+}, 2000);
