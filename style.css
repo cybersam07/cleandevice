@@ -1,0 +1,125 @@
+/* Reset default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: white; /* Set the background color to white */
+}
+
+/* Center the content */
+.center {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Loading container */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+/* Loading box with bevel and shadow effect */
+.loading-box {
+    background-color: black; /* Set the background color to black */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px; /* Add spacing between the box and the ring */
+}
+
+/* Loading text animation */
+#loading-text {
+    color: white; /* Set the text color to white */
+    font-size: 2vmin; /* Adjust the font size as desired */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 200px;
+    animation: text 3s ease-in-out infinite;
+}
+
+/* Ring animation */
+.ring {
+    position: absolute;
+    width: 15vmin; /* Adjust the size as desired */
+    height: 15vmin; /* Adjust the size as desired */
+    border-radius: 50%;
+    animation: ring 10s linear forwards, programAnimation 2s linear 10s forwards;
+}
+
+@keyframes ring {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 1px 5px 2px #e65c00;
+    }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 1px 5px 2px #18b201;
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 1px 5px 2px #0456c8;
+    }
+}
+
+.ring:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, .3);
+}
+
+/* Loading text animation */
+span {
+    color: #737373;
+    font-size: 2vmin; /* Adjust the font size as desired */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 200px;
+    animation: text 3s ease-in-out infinite;
+}
+
+@keyframes text {
+    50% {
+        color: black;
+    }
+}
+
+/* Pop-up animation */
+@keyframes programAnimation {
+    0% {
+        /* Initial styles */
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    100% {
+        /* Final styles (approved sign) */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide the approved sign initially */
+.approved-sign {
+    display: none;
+}
+
+/* Pop animation for approved sign */
+@keyframes pop {
+    from {
+        transform: scale(0, 0);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
