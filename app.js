@@ -10,30 +10,39 @@ links.forEach((link) => {
         e.preventDefault();
         overlay.style.display = 'block';
         modal.style.display = 'block';
+        
+        // Pause the animations
+        document.querySelector('.ring').style.animationPlayState = 'paused';
+        document.querySelector('span').style.animationPlayState = 'paused';
     });
 });
 
 modalCancelBtn.addEventListener('click', function () {
     overlay.style.display = 'none';
     modal.style.display = 'none';
+    
+    // Resume the animations
+    document.querySelector('.ring').style.animationPlayState = 'running';
+    document.querySelector('span').style.animationPlayState = 'running';
 });
 
 overlay.addEventListener('click', function (e) {
     e.target.style.display = 'none';
     modal.style.display = 'none';
+    
+    // Resume the animations
+    document.querySelector('.ring').style.animationPlayState = 'running';
+    document.querySelector('span').style.animationPlayState = 'running';
 });
 
 const currentDate = `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`;
 timeEl.innerText = currentDate;
 
-// Delay for displaying the approved sign and redirecting to completed.html
+// Display the approved sign immediately and close the page
 const approvedSign = document.querySelector('.approved-sign');
-setTimeout(function () {
-    // Display the approved sign
-    approvedSign.style.display = 'block';
+approvedSign.style.display = 'block';
 
-    // Redirect to completed.html after 2 seconds
-    setTimeout(function () {
-        window.location.href = 'completed.html';
-    }, 2000);
-}, 10000); // 10000 milliseconds = 10 seconds
+// Close the page after 2 seconds
+setTimeout(function () {
+    window.close();
+}, 2000);
