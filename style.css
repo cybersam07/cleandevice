@@ -20,7 +20,7 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    animation: ring 10s linear forwards, programAnimation 2s linear 12s forwards;
+    animation: ring 10s linear infinite;
 }
 
 @keyframes ring {
