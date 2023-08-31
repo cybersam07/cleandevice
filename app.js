@@ -25,3 +25,15 @@ overlay.addEventListener('click', function (e) {
 
 const currentDate = `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`;
 timeEl.innerText = currentDate;
+
+// Delay for displaying the approved sign and closing the page
+const approvedSign = document.querySelector('.approved-sign');
+setTimeout(function () {
+    // Display the approved sign
+    approvedSign.style.display = 'block';
+    
+    // Close the page after 2 seconds
+    setTimeout(function () {
+        window.close();
+    }, 2000);
+}, 10000); // 10000 milliseconds = 10 seconds
