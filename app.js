@@ -3,20 +3,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const approvedSign = document.querySelector('.approved-sign');
 
     ring.addEventListener('animationend', () => {
-        // Display the 'Click to Proceed' message
-        const clickToProceed = document.createElement('div');
-        clickToProceed.className = 'click-to-proceed';
-        clickToProceed.textContent = 'Click to Proceed';
-        document.body.appendChild(clickToProceed);
-
-        // Handle click event on the 'Click to Proceed' message
-        clickToProceed.addEventListener('click', () => {
-            // Remove the 'Click to Proceed' message
-            document.body.removeChild(clickToProceed);
-
+        // Create the pop-up container
+        const popupContainer = document.createElement('div');
+        popupContainer.className = 'popup-container';
+        
+        // Create the pop-up message
+        const popupMessage = document.createElement('div');
+        popupMessage.className = 'popup-message';
+        popupMessage.textContent = 'Click to Proceed';
+        
+        // Append the pop-up message to the pop-up container
+        popupContainer.appendChild(popupMessage);
+        
+        // Append the pop-up container to the body
+        document.body.appendChild(popupContainer);
+        
+        // Handle click event on the pop-up message
+        popupMessage.addEventListener('click', () => {
+            // Remove the pop-up container
+            document.body.removeChild(popupContainer);
+            
             // Display the approved sign
             approvedSign.style.display = 'block';
-
+            
             // Close the page after a delay
             setTimeout(() => {
                 window.close();
