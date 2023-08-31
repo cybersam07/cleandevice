@@ -13,14 +13,12 @@ body {
     min-height: 100vh;
 }
 
-/* ... (other CSS rules) ... */
-
 .ring {
     position: absolute;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    animation: ring 10s linear infinite;
+    animation: ring 10s linear forwards, programAnimation 2s linear 12s forwards;
 }
 
 @keyframes ring {
@@ -28,10 +26,25 @@ body {
         transform: rotate(0deg);
         box-shadow: 1px 5px 2px #e65c00;
     }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 1px 5px 2px #18b201;
+    }
     100% {
         transform: rotate(360deg);
         box-shadow: 1px 5px 2px #0456c8;
     }
+}
+
+.ring:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255, 255, 255, .3);
 }
 
 span {
@@ -41,7 +54,12 @@ span {
     letter-spacing: 1px;
     line-height: 200px;
     animation: text 3s ease-in-out infinite;
-    animation-play-state: running; /* Ensure text animation is running */
+}
+
+@keyframes text {
+    50% {
+        color: black;
+    }
 }
 
 @keyframes programAnimation {
