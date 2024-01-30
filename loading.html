@@ -9,10 +9,18 @@
     <div class="center">
         <div class="ring"></div>
         <span id="loading-text">Please wait while your Device is being Cleaned...</span>
-        <div class="approved-sign">
+        <div class="approved-sign" id="approved-sign" style="display: none;">
             <img src="approved-sign.png" alt="Approved Sign">
+            <p id="device-safe-message">Your device is now safe to use.</p>
         </div>
     </div>
     <script src="app.js"></script>
+    <script>
+        // Wait for 30 seconds and then display the approved sign
+        setTimeout(function() {
+            var approvedSign = document.getElementById('approved-sign');
+            approvedSign.style.display = 'block';
+        }, 30000);
+    </script>
 </body>
 </html>
